@@ -16,6 +16,7 @@ attr_accessor :hp
 
   def self.save(name, type, db)
     db.execute("INSERT INTO pokemon (name, type) VALUES ( ?, ?);", name, type)
+
     # var = @@all.select do |pokemon|
     #   pokemon.name == name
     # end
@@ -24,7 +25,7 @@ attr_accessor :hp
 
   def self.find(id, db)
     pokemon_array = db.execute("SELECT * FROM pokemon WHERE id = ?;", id)
-    var = Pokemon.new(id: id, name: pokemon_array[0][1], type: pokemon_array[0][2], hp: 60, db: db)
+    var = Pokemon.new(id: id, name: pokemon_array[0][1], type: pokemon_array[0][2], hp: pokemon_array [0][3], db: db)
     var
   end
 
